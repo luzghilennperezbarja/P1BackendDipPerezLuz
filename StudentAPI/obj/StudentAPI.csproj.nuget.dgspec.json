@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\diplomado\\P1BackendDipPerezLuz\\EstudentAPI\\EstudentAPI.csproj": {}
+    "D:\\diplomado\\P1BackendDipPerezLuz\\StudentAPI\\StudentAPI.csproj": {}
   },
   "projects": {
-    "D:\\diplomado\\P1BackendDipPerezLuz\\EstudentAPI\\EstudentAPI.csproj": {
+    "D:\\diplomado\\P1BackendDipPerezLuz\\StudentAPI\\StudentAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\diplomado\\P1BackendDipPerezLuz\\EstudentAPI\\EstudentAPI.csproj",
-        "projectName": "EstudentAPI",
-        "projectPath": "D:\\diplomado\\P1BackendDipPerezLuz\\EstudentAPI\\EstudentAPI.csproj",
+        "projectUniqueName": "D:\\diplomado\\P1BackendDipPerezLuz\\StudentAPI\\StudentAPI.csproj",
+        "projectName": "StudentAPI",
+        "projectPath": "D:\\diplomado\\P1BackendDipPerezLuz\\StudentAPI\\StudentAPI.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "D:\\diplomado\\P1BackendDipPerezLuz\\EstudentAPI\\obj\\",
+        "outputPath": "D:\\diplomado\\P1BackendDipPerezLuz\\StudentAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config"

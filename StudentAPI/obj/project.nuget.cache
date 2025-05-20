@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2ZYtHC7+zP4=",
+  "dgSpecHash": "awKESZJrLkI=",
   "success": true,
-  "projectFilePath": "D:\\diplomado\\P1BackendDipPerezLuz\\EstudentAPI\\EstudentAPI.csproj",
+  "projectFilePath": "D:\\diplomado\\P1BackendDipPerezLuz\\StudentAPI\\StudentAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.15\\microsoft.aspnetcore.openapi.8.0.15.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
