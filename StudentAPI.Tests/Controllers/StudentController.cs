@@ -1,27 +1,91 @@
-using Xunit;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using StudentAPI.Controllers;
 using StudentAPI.Models;
 using StudentAPI.Services;
-using Microsoft.AspNetCore.Mvc;
+using Xunit;
 
-namespace StudentAPI.Tests
+namespace StudentAPI.Tests.Controllers
 {
     public class StudentControllerTests
     {
-        [Fact]
-        public void HasApproved_ReturnsOkResult_WithExpectedValue()
+        private readonly Mock<IStudentService> _mockStudentService;
+        private readonly StudentController _controller;
+
+        public StudentControllerTests()
         {
-            var mockService = new Mock<IStudentService>();
-            var student = new Student { CI = 1, Nombre = "Test", Nota = 80 };
-            mockService.Setup(s => s.HasApproved(student)).Returns(true);
+            _mockStudentService = new Mock<IStudentService>();
+            _controller = new StudentController(_mockStudentService.Object);
+        }
 
-            var controller = new StudentController(mockService.Object);
+        [Fact]
+        public void CheckIfStudentApproved_WithApprovedStudent_ReturnsTrue()
+        {
+            // Arrange
+            var estudiante = new Estudiante
+            {
+                CI = 12345,
+                Nombre = "Juan Pérez",
+                Nota = 75
+            };
 
-            var result = controller.HasApproved(student);
+            _mockStudentService.Setup(service => service.HasApproved(It.IsAny<Estudiante>()))
+                .Returns(true);
 
-            var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            Assert.True((bool)okResult.Value);
+            // Act
+            var result = _controller.CheckIfStudentApproved(estudiante);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var value = okResult.Value;
+            Assert.NotNull(value);
+            Assert.True((bool)value);
+            _mockStudentService.Verify(service => service.HasApproved(It.IsAny<Estudiante>()), Times.Once);
+        }
+
+        [Fact]
+        public void CheckIfStudentApproved_WithFailedStudent_ReturnsFalse()
+        {
+            // Arrange
+            var estudiante = new Estudiante
+            {
+                CI = 12345,
+                Nombre = "Juan Pérez",
+                Nota = 45
+            };
+
+            _mockStudentService.Setup(service => service.HasApproved(It.IsAny<Estudiante>()))
+                .Returns(false);
+
+            // Act
+            var result = _controller.CheckIfStudentApproved(estudiante);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var value = okResult.Value;
+            Assert.NotNull(value);
+            Assert.False((bool)value);
+            _mockStudentService.Verify(service => service.HasApproved(It.IsAny<Estudiante>()), Times.Once);
+        }
+
+        [Fact]
+        public void GetStudentInfo_ReturnsCorrectStudentData()
+        {
+            // Arrange
+            int ci = 54321;
+            string nombre = "María López";
+            int nota = 85;
+
+            // Act
+            var result = _controller.GetStudentInfo(ci, nombre, nota);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var estudiante = Assert.IsType<Estudiante>(okResult.Value);
+            
+            Assert.Equal(54321, estudiante.CI);
+            Assert.Equal("María López", estudiante.Nombre);
+            Assert.Equal(85, estudiante.Nota);
         }
     }
 }

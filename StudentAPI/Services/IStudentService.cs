@@ -4,6 +4,6 @@ namespace StudentAPI.Services
 {
     public interface IStudentService
     {
-        bool HasApproved(Student student);
+        bool HasApproved(Estudiante estudiante);
     }
 }

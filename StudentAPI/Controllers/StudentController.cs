@@ -15,11 +15,23 @@ namespace StudentAPI.Controllers
             _studentService = studentService;
         }
 
-        [HttpPost("hasapproved")]
-        public ActionResult<bool> HasApproved([FromBody] Student student)
+        [HttpPost("check-approval")]
+        public IActionResult CheckIfStudentApproved([FromBody] Estudiante estudiante)
         {
-            var result = _studentService.HasApproved(student);
-            return Ok(result);
+            return Ok(_studentService.HasApproved(estudiante));
+        }
+
+        [HttpGet("info")]
+        public IActionResult GetStudentInfo([FromQuery] int ci, [FromQuery] string nombre, [FromQuery] int nota)
+        {
+            var estudiante = new Estudiante
+            {
+                CI = ci,
+                Nombre = nombre,
+                Nota = nota
+            };
+            
+            return Ok(estudiante);
         }
     }
 }

@@ -4,9 +4,10 @@ namespace StudentAPI.Services
 {
     public class StudentService : IStudentService
     {
-        public bool HasApproved(Student student)
+        public bool HasApproved(Estudiante estudiante)
         {
-            return student.Nota >= 51;
+            // Nota de aprobación: 51
+            return estudiante.Nota >= 51;
         }
     }
 }
